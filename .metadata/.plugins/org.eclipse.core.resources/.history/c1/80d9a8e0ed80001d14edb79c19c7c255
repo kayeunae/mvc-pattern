@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+/*초기화 코드*/
+* {
+margin: 0;
+padding: 0;
+}
+
+/*topmenu.jsp*/
+header {
+	top: 0;
+	height: 100px;
+	line-height: 100px;
+	width: 100%;
+	background: blue;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 900;
+	color: white;
+}
+
+nav ul {
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	background: skyblue;
+	overflow: hidden;
+}
+
+nav ul li {
+	list-style: none;
+	float: left;
+	padding: 10px;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+

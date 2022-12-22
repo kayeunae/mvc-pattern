@@ -1,0 +1,10 @@
+package DTO;
+
+public class Vote {
+	private String v_jumin;
+	private String v_name;
+	private String m_no;
+	private String v_time;
+	private String v_area;
+	private String v_confirm;
+}

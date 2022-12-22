@@ -1,0 +1,10 @@
+package DTO;
+
+public class Member {
+	String m_no;
+	String m_name;
+	String p_code;
+	String p_school;
+	String m_jumin;
+	String m_city;
+}

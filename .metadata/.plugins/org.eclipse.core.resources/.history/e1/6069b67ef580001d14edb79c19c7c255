@@ -1,0 +1,13 @@
+package DTO;
+
+import java.sql.Date;
+
+public class Party {
+	String p_code;
+	String p_name;
+	Date p_indate;
+	String p_reader;
+	String p_tel1;
+	String p_tel2;
+	String p_tel3;
+}

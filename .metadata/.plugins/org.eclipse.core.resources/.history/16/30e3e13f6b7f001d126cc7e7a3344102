@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+/*초기화 코드*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* topmenu.jsp */
+header{
+	top: 0;
+	height: 150px;
+	line-height: 150px;
+	width: 100%;
+	background: blue;
+	text-align: center;
+	font-size: 35px;
+	font-weight: 900;
+	color: #fff;
+}
+
+nav ul{
+	height: 50px;
+	line-height: 50px;
+	width: 100%;
+	background: skyblue;
+	overflow: hidden;
+}
+
+nav ul li {
+	/* 수직 정렬 */
+	float: left;
+	list-style: none;
+	/*양 옆에 10px 여백*/
+	padding: 0 10px;
+}
+
+a{
+	text-decoration: none;
+	color: #fff;
+}
+
+/* 
+a:hover{
+	cursor: pointer;
+}
+*/
+
+/* index.jsp */
+section{
+	position: absolute;
+	overflow: auto;
+	width: 100%;
+	height:100%;
+	background: #e3e5e5;
+}
+
+/* add.jsp */
+.title {
+	font-size: 30px;
+	font-weight: 900;
+	text-align: center;
+	margin: 3rem;
+}
+
+.wrapper {
+	display: flex;
+	/*아래 두 개는 전체 콘텐츠를 가운데 정렬하는 역할을 함*/
+	justify-content: center;
+	align-items: center;
+	/* 여기까지 */
+	text-align: center;
+}
+
+table{
+	width: 600px;
+}
+
+table, tr, th, td {
+	border: 1px solid black;
+}
+
+td input {
+	float: left;
+	padding: 0.3rem;
+}
+
+td input[name=phone] {
+	width: 70%;	
+}
+
+td input[name=address] {
+	width: 90%;
+}
+
+.btn {
+	padding: 0.2rem 1rem;
+}
+
+/* footer.jsp */
+footer{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	background: blue;
+	color: white;
+}

@@ -1,0 +1,22 @@
+package DAO;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class MemberDAO {
+	//DB 연결
+	Connection conn = null;
+	//쿼리문 실행
+	PreparedStatement ps = null;
+	//결과 담는 부분
+	ResultSet rs = null;
+	
+	public static Connection getConnection() throws Exception {
+		Class.forName("oracle.jdbc.OracleDriver");
+		Connection con = DriverManager.getConnection
+					("jdbc:orcle:thin:@localhost:1524:xe", "system", "sys1234");
+	}
+}

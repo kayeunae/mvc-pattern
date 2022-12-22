@@ -1,0 +1,15 @@
+package DTO;
+
+import java.sql.Date;
+
+public class Member {
+	int custno;
+	String custname;
+	String phone;
+	String address;
+	String joindate;
+	String grade;
+	String city;
+	
+	
+}
