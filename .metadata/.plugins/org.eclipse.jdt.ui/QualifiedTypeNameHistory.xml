@@ -18,4 +18,5 @@
     <fullyQualifiedTypeName name="DTO.Party"/>
     <fullyQualifiedTypeName name="DTO.MemParty"/>
     <fullyQualifiedTypeName name="DTO.Vote"/>
+    <fullyQualifiedTypeName name="DTO.Rating"/>
 </qualifiedTypeNameHistroy>
