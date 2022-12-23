@@ -39,7 +39,7 @@ public class VoteDAO {
 			//쿼리문 작성
 			String sql = "select t1.m_no , t1.m_name, t2.p_name, decode(t1.p_school, '1', '고졸', '2', '학사', '3', '석사') p_school, substr(t1.m_jumin,1,6)||'-'||substr(t1.m_jumin,7)m_jumin, t1.m_city, t2.p_tel1||'-'||t2.p_tel2||'-'||(substr(t2.p_tel3,4)||substr(t2.p_tel3,4)||substr(t2.p_tel3,4)||substr(t2.p_tel3,4)) as p_tel1 from tbl_member_202005 t1 join tbl_party_202005 t2 on t1.p_code = t2.p_code";
 			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery();
+			rs = ps.executeQuery(); 
 			
 			while(rs.next()) {
 				MemParty mp = new MemParty();
