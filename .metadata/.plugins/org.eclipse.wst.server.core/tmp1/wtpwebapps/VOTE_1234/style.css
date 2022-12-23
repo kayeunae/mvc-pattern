@@ -80,8 +80,52 @@ table {
 	width: 900px;
 }
 
-table, tr, tr, td {
+table, tr, th, td {
 	border: 1px solid black;
+	border-collapse: collapse;
+	height: 30px;
+}
+
+/* doVote.jsp */
+.doVote {
+	width: 600px; 
+}
+
+/*
+.doVote tr td .button {
+	text-align: center;
+}
+*/
+
+.doVote td input, select {
+	margin: 0 10px;
+	height: 20px;
+	text-align : left;
+}
+
+.doVote td select {
+	height: 23px;
+}
+
+.doVote td input {
+	padding: 0 5px;
+}
+
+.rbtn {
+	vertical-align: -4px;
+}
+
+.btn {
+	text-align: center;
+	width: 65px;
+	height: 25px;
+	line-height: 25px;
+	display: inline-block;
+}
+
+/* rate.jsp */
+.rate {
+	width: 250px;
 }
 
 /* footer.jsp */

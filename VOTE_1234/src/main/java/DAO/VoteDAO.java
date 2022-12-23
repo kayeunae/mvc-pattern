@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DTO.MemParty;
-import DTO.Member;
-import DTO.Party;
+import DTO.*;
 
 public class VoteDAO {
 	Connection conn = null;
@@ -105,4 +103,79 @@ public class VoteDAO {
 		return result;
 	}
 	
+	public String selectVoter(HttpServletRequest request, HttpServletResponse response) {
+		ArrayList<Vote> voteList = new ArrayList<Vote>();
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "select v_name, (1900+substr(v_jumin, 1,2))||'년'||substr(v_jumin, 3,2)||'월'||substr(v_jumin, 5,2)||'일생', "
+					+ "'만'||(2020-(1900 + substr(v_jumin,1,2)))||'세', decode(substr(v_jumin, 7, 1), 1, '남', 2, '여'), "
+					+ "m_no, substr(v_time, 1,2)||':'||substr(v_time, 3,2), decode(v_confirm, 'N', '미확인', 'Y', '확인') "
+					+ "from tbl_vote_202005";
+			
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Vote voter = new Vote();
+				voter.setName(rs.getString(1));
+				voter.setBirth(rs.getString(2));
+				voter.setAge(rs.getString(3));
+				voter.setGender(rs.getString(4));
+				voter.setNo(rs.getString(5));
+				voter.setTime(rs.getString(6));
+				voter.setConf(rs.getString(7));
+				
+				voteList.add(voter);
+			}
+			request.setAttribute("voter", voteList);
+			
+			conn.close();
+			ps.close();
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "viewVote.jsp";
+	}
+	
+	public String rating(HttpServletRequest request, HttpServletResponse response) {
+		ArrayList<Rating> rating = new ArrayList<Rating>();
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "select t1.m_no, t2.m_name, count(t1.v_jumin) "
+					+ "from tbl_vote_202005 t1 "
+					+ "join tbl_member_202005 t2 "
+					+ "on t1.m_no = t2.m_no "
+					+ "group by t1.m_no, t2.m_name, t1.v_confirm "
+					+ "having t1.v_confirm = 'Y' "
+					+ "order by count(t1.v_jumin) desc";
+			
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Rating rate = new Rating();
+				
+				rate.setNumber(rs.getString(1));
+				rate.setName(rs.getString(2));
+				rate.setCount(rs.getString(3));
+			
+				rating.add(rate);
+			}
+			
+			request.setAttribute("rating", rating);
+			
+			conn.close();
+			ps.close();
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "rate.jsp";
+	}
 }

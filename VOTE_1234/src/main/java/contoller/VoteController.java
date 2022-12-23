@@ -69,10 +69,12 @@ public class VoteController extends HttpServlet {
 				out.flush();
 			}
 			break;
-		case "/view": site = ""; break;
+		case "/view": 
+			site = vote.selectVoter(request, response); 
+			break;
+		case "/rate":
+			site = vote.rating(request, response);
 		}
-		
-		
 		getServletContext().getRequestDispatcher("/" + site).forward(request, response);
 	}
 

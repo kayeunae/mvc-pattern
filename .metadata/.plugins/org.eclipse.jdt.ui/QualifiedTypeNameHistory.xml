@@ -17,4 +17,5 @@
     <fullyQualifiedTypeName name="DAO.VoteDAO"/>
     <fullyQualifiedTypeName name="DTO.Party"/>
     <fullyQualifiedTypeName name="DTO.MemParty"/>
+    <fullyQualifiedTypeName name="DTO.Vote"/>
 </qualifiedTypeNameHistroy>

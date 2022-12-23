@@ -13,7 +13,7 @@
 			<li><a href="member">후보조회</a></li>
 			<li><a href="doVote">투표하기</a></li>
 			<li><a href="view">투표검수조회</a></li>
-			<li><a href="result">후보자등수</a></li>
+			<li><a href="rate">후보자등수</a></li>
 			<li><a href="home">홈으로</a></li>
 		</ul>
 	</nav>

@@ -1,48 +1,55 @@
 package DTO;
 
 public class Vote {
-	String v_jumin;
-	String v_name;
-	String m_no;
-	String v_time;
-	String v_area;
-	String v_confirm;
+	String name;
+	String birth;
+	String age;
+	String gender;
+	String no;
+	String time;
+	String conf;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+	public String getAge() {
+		return age;
+	}
+	public void setAge(String age) {
+		this.age = age;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getNo() {
+		return no;
+	}
+	public void setNo(String no) {
+		this.no = no;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
+	public String getConf() {
+		return conf;
+	}
+	public void setConf(String conf) {
+		this.conf = conf;
+	}
 	
 	
-	public String getV_jumin() {
-		return v_jumin;
-	}
-	public void setV_jumin(String v_jumin) {
-		this.v_jumin = v_jumin;
-	}
-	public String getV_name() {
-		return v_name;
-	}
-	public void setV_name(String v_name) {
-		this.v_name = v_name;
-	}
-	public String getM_no() {
-		return m_no;
-	}
-	public void setM_no(String m_no) {
-		this.m_no = m_no;
-	}
-	public String getV_time() {
-		return v_time;
-	}
-	public void setV_time(String v_time) {
-		this.v_time = v_time;
-	}
-	public String getV_area() {
-		return v_area;
-	}
-	public void setV_area(String v_area) {
-		this.v_area = v_area;
-	}
-	public String getV_confirm() {
-		return v_confirm;
-	}
-	public void setV_confirm(String v_confirm) {
-		this.v_confirm = v_confirm;
-	}
 }
