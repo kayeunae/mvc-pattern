@@ -35,6 +35,7 @@ public class VoteController extends HttpServlet {
 		
 		String context = request.getContextPath();	//VOTE_1234
 		String command = request.getServletPath();	//url 마지막 경로
+													//topmenu의 <a>태그 href가 보냄 !
 		String site = null;
 		
 		System.out.println(context + " " +command );
