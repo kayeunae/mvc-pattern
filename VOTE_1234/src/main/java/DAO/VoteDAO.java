@@ -30,7 +30,7 @@ public class VoteDAO {
 	}
 	
 	public String selectMember(HttpServletRequest request, HttpServletResponse response) {
-		//컨트롤러에 보내기 위해 Member.java (엔티티 클래스)를 arraylist에 담는다.
+		//컨트롤러에 보내기 위해 엔티티 클래스를 arraylist에 담는다.
 		ArrayList<MemParty> list = new ArrayList<MemParty>();
 	
 		try {
