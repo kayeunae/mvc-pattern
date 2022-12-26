@@ -1,9 +1,0 @@
-package DTO;
-
-public class Money {
-	int custno;
-	String custname;
-	String grade;
-	int price;
-	
-}
