@@ -5,6 +5,8 @@ C:\hrdkorea\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4256635198.ind
 \HRD_1234-easy\src\main\java
 C:\hrdkorea\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3882650937.index
 \board\src\main\java
+C:\hrdkorea\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1200274317.index
+\Bus\src\main\java
 C:\hrdkorea\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3315737570.index
 \HRD_1234\src\main\java
 C:\hrdkorea\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2178768106.index

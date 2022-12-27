@@ -1,6 +1,13 @@
 package controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.net.URLEncoder;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletConfig;
@@ -61,6 +68,15 @@ public class BoardController extends HttpServlet {
 				break;
 			case "/insert" :	//insert 기능
 				site = insertBoard(request);
+				break;
+			case "/edit" :	//수정 화면을 보여줌
+				site = getViewForEdit(request);
+				break;
+			case "/update" :
+				site = updateBoard(request);
+				break;
+			case "/delete" :
+				site = deleteBoard(request);
 				break;
 		}
 		
@@ -145,14 +161,66 @@ public class BoardController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			ctx.log("게시글 등록 과정에서 문제 발생");
-			request.setAttribute("error", "게시글을 정상적으로 등록되지 않았습니다!");
-			//redirect방식으로..
-			return getList(request);
+			//에러 메세지를 get 방식으로 보냄
+			try {
+				String encodename = URLEncoder.encode("게시물이 정상적으로 등록되지 않았습니다!", "UTF-8");
+				return "redirect:/list?error=" + encodename;
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			}
 		}
-		
 		return "redirect:/list";
 	}
 	
+	public String getViewForEdit(HttpServletRequest request) {
+		int board_no = Integer.parseInt(request.getParameter("board_no"));
+		
+		try {
+			Board b = dao.getViewForEdit(board_no);
+			request.setAttribute("board", b);
+		} catch (Exception e) {
+			e.printStackTrace();
+			ctx.log("게시글 조회 과정에서 문제 발생");
+			request.setAttribute("error", "게시글을 정상적으로 가져오지 못했습니다!");
+		}
+		return "edit.jsp";
+	}
 	
+	public String updateBoard(HttpServletRequest request) {
+		Board b = new Board();
+		try {
+			BeanUtils.populate(b, request.getParameterMap());
+			dao.updateBoard(b);
+		} catch (Exception e) {
+			e.printStackTrace();
+			ctx.log("게시글 수정 과정에서 문제 발생");
+			//에러 메세지를 get 방식으로 보냄
+			try {
+				String encodeName = URLEncoder.encode("게시물이 정상적으로 수정되지 않았습니다!", "UTF-8");
+				return "redirect:/view?board_no=" + b.getBoard_no() + "&error=" + encodeName;
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			}
+		}
+		return "redirect:/view?board_no=" + b.getBoard_no();
+	}
 
+	public String deleteBoard(HttpServletRequest request) {
+		int board_no = Integer.parseInt(request.getParameter("board_no"));
+		
+		try {
+			dao.deleteBoard(board_no);
+		} catch(Exception e) {
+			e.printStackTrace();
+			ctx.log("게시글 삭제 과정에서 문제 발생");
+			String encodeName;
+			try {
+				encodeName = URLEncoder.encode("게시물이 정상적으로 삭제되지 않았습니다!", "UTF-8");
+				return "redirect:/list?error=" + encodeName;
+			} catch(Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+		return "redirect:/list";
+	}
 }

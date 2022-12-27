@@ -13,3 +13,14 @@ function chkForm(){
 	
 	f.submit();	//폼태그 전송
 }
+
+function chkDelete(board_no) {
+	const result = confirm("삭제하시겠습니까?");
+	
+	if(result){
+		const url = location.origin;	//http://loacalhost:8082 가 뜸
+		location.href = url + "/board2/delete?board_no=" + board_no;	//페이지 이동
+	}else {
+		return false;
+	}
+}

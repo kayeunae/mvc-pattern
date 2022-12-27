@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <temp-directories>
   <temp-directory age="0" key="Tomcat v9.0 Server at board2" path="tmp3" recycle="false"/>
+  <temp-directory age="0" key="Tomcat v9.0 Server - BUS" path="tmp4" recycle="false"/>
   <temp-directory age="0" key="Tomcat v9.0 Server at localhost" path="tmp0" recycle="false"/>
   <temp-directory age="0" key="Tomcat v9.0 Server at localhost (vote)" path="tmp1" recycle="false"/>
   <temp-directory age="0" key="Tomcat v9.0 Server at HRD_12134-easy2" path="tmp2" recycle="false"/>

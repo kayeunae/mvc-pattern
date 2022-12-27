@@ -42,21 +42,27 @@
 			<a href="write">글쓰기</a>
 		</div>
 		<div class="board_page">
-			<a href="#" class="bt first">&lt;&lt;</a> 
-			<a href="#" class="bt prev">&lt;</a>
-			<a href="#" class="num on">1</a> 
-			<a href="#" class="num">2</a> 
-			<a href="#" class="num">3</a> 
-			<a href="#" class="num">4</a> 
-			<a href="#" class="num">5</a> 
-			<a href="#" class="bt next">&gt;</a>
-			<a href="#" class="bt last">&gt;&gt;</a>
+			<a class="bt first">&lt;&lt;</a> 
+			<a class="bt prev">&lt;</a>
+			<a class="num on">1</a> 
+			<a class="num">2</a> 
+			<a class="num">3</a> 
+			<a class="num">4</a> 
+			<a class="num">5</a> 
+			<a class="bt next">&gt;</a>
+			<a href="" class="bt last">&gt;&gt;</a>
 		</div>
 	</div>
 	<script>
 		//에러메세지 전달
+		
+		//쿼리스트링으로 오류가 전달될 때 (param. 을 붙여야 한글로 뜸)
+		<c:if test="${param.error != null}">
+			alert("${error}");
+		</c:if>
+		//setAttribute로 오류가 전달될 때
 		<c:if test="${error != null}">
-			alert("${error}");	//error 메세지가 뜰 것(BoardController에 있는 value값이 뜬다.)
+		alert("${error}");	//error 메세지가 뜰 것(BoardController에 있는 value값이 뜬다.)
 		</c:if>
 	</script>
 </body>

@@ -18,7 +18,7 @@
       <div class="board_view_wrap">
         <div class="board_view">
           <div class="title">${board.title}</div> <!-- DTO에 있는 요소와 맞춰서 쓰기 -->
-          <div class="info">
+          <div class="info" style="position:relative;">
             <dl>
               <dt>번호</dt>
               <dd>${board.board_no}</dd>
@@ -35,22 +35,30 @@
               <dt>조회</dt>
               <dd>${board.view}</dd>
             </dl>
+            <dl style="position:absolute; right:0;">
+              <dt><a href="#" onclick="chkDelete(${board.board_no}); return false;">삭제하기</a></dt>
+            </dl>
           </div>
-          <div class="cont">
+          <div class="cont" style="white-space:pre-wrap;">
 			${board.content}
           </div>
         </div>
         <div class="bt_wrap">
           <a href="list" class="on">목록</a>
-          <a href="edit.html">수정</a>
+          <a href="edit?board_no=${board.board_no}">수정</a>	<!-- get방식 -->
         </div>
       </div>
     </div>
     	<script>
 		//에러메세지 전달
-		<c:if test="${error != null}">
+		<c:if test="${param.error != null}">
 			alert("${error}");	//error 메세지가 뜰 것(BoardController에 있는 value값이 뜬다.)
 		</c:if>
+		
+		<c:if test="${error != null}">
+		alert("${error}");	//error 메세지가 뜰 것(BoardController에 있는 value값이 뜬다.)
+		</c:if>
 	</script>
+<script type="text/javascript" src="./script.js"></script>
 </body>
 </html>

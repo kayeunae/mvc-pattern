@@ -4,4 +4,5 @@
   <server id="Tomcat v9.0 Server at localhost (vote)" path="publish1.dat"/>
   <server id="Tomcat v9.0 Server at board2" path="publish3.dat"/>
   <server id="Tomcat v9.0 Server at HRD_12134-easy2" path="publish2.dat"/>
+  <server id="Tomcat v9.0 Server - BUS" path="publish4.dat"/>
 </publish-info>
