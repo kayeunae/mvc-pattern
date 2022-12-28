@@ -5,6 +5,8 @@ public class Bus {
 	private String depart;
 	private String arrival;
 	private String d_time;
+	private String a_time;
+	private String duration;
 	private int charge;
 	
 	public String getBus_no() {
@@ -30,6 +32,18 @@ public class Bus {
 	}
 	public void setD_time(String d_time) {
 		this.d_time = d_time;
+	}
+	public String getA_time() {
+		return a_time;
+	}
+	public void setA_time(String a_time) {
+		this.a_time = a_time;
+	}
+	public String getDuration() {
+		return duration;
+	}
+	public void setDuration(String duration) {
+		this.duration = duration;
 	}
 	public int getCharge() {
 		return charge;
