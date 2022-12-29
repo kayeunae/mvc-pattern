@@ -14,7 +14,7 @@
 		<div class="wrapper">
 			<div class="big"><a href="view">시간표 조회</a></div>
 			<div class="big"><a href="inquiry">예약 조회</a></div>
-			<div class="big"><a href="signUp">회원가입</a></div>
+			<div class="big"><a href="sign">회원가입</a></div>
 		</div>
 	</section>
 	<%@include file="footer.jsp"%>

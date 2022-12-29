@@ -1,11 +1,14 @@
 package DAO;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
 
 import DTO.Bus;
 import DTO.Passenger;
@@ -58,22 +61,43 @@ public class BusDAO {
 	    	Connection conn = open();
 	    	Bus bus = new Bus();
 	    	
-	    	String sql = "SELECT DEPART, ARRIVAL, D_TIME, A_TIME, DURATION, CHARGE FROM BUS WHERE BUS_NO = '" + bus_no + "'";
+	    	String sql = "SELECT BUS_NO, DEPART, ARRIVAL, D_TIME, A_TIME, DURATION, CHARGE FROM BUS WHERE BUS_NO = '" + bus_no + "'";
 	    	PreparedStatement pstmt = conn.prepareStatement(sql);
 	    	ResultSet rs = pstmt.executeQuery();
 	    	
 	    	try(conn; pstmt; rs) {
 	    		
 	    		while(rs.next()) {
-	    		bus.setDepart(rs.getString(1));
-	    		bus.setArrival(rs.getString(2));
-	    		bus.setD_time(rs.getString(3));
-	    		bus.setA_time(rs.getString(4));
-	    		bus.setDuration(rs.getString(5));
-	    		bus.setCharge(rs.getInt(6));
+	    		bus.setBus_no(rs.getString(1));
+	    		bus.setDepart(rs.getString(2));
+	    		bus.setArrival(rs.getString(3));
+	    		bus.setD_time(rs.getString(4));
+	    		bus.setA_time(rs.getString(5));
+	    		bus.setDuration(rs.getString(6));
+	    		bus.setCharge(rs.getInt(7));
 	    		}
 	    	}
 	    	return bus;
+	    }
+	    
+	    public String check(Passenger passenger) throws Exception {
+	    	Connection conn = open();
+	    	
+	    	String sql = "SELECT ID FROM PASSENGER WHERE ID = ?";
+	    	PreparedStatement pstmt = conn.prepareStatement(sql);
+	    	pstmt.setString(1, passenger.getId());
+	    	ResultSet rs = pstmt.executeQuery();
+	    	
+	    	try (conn; pstmt; rs) {
+	    		
+	    		if (rs.next()) {
+	    			return "1";  
+	    		}
+	    		else {
+	    			return "0";  
+	    		}
+	    	}
+
 	    }
 	    
 	    public void signUp(Passenger passenger) throws Exception {
@@ -90,5 +114,7 @@ public class BusDAO {
 	    		pstmt.setString(5, passenger.getPhone());
 	    		pstmt.executeUpdate();
 	    	}
+	    	
 	    }
+
 }
