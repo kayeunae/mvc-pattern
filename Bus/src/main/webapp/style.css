@@ -18,6 +18,8 @@ header {
 	font-weight: 900;
 }
 
+/*.bnone{border:none;}*/
+
 /* topmenu.jsp */
 nav ul {
 	height: 40px;
@@ -33,6 +35,8 @@ nav ul li {
 	padding: 0 10px;
 }
 
+.menu {color: #ffffff;}
+
 /* index.jsp */
 section {
 	position: absolute;
@@ -43,8 +47,30 @@ section {
 
 a {
 	text-decoration: none;
-	color: #ffffff;
+	color: black;
 }
+
+a:hover{cursor: pointer;}
+.big:hover{cursor: pointer;}
+
+input {
+	margin-left: 10px;
+    padding: 2px 0 2px 3px;
+    width: 50%;
+}
+
+.id_input {
+	width: 200px !important;
+} 
+
+button{
+	width: 100px;
+    border: none;
+    box-shadow: darkgrey 2px 2px 2px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+.table_btn{position:relative; top:-2px;}
 
 .wrapper{
 	display: flex;
@@ -52,7 +78,16 @@ a {
 	align-items: center;
 	text-align: center;
 	width: 900px;
+	margin:0 auto;
 }
+
+.inq_wrapper{
+	text-align: center;
+	width: 900px;
+	margin:0 auto;
+}
+
+.noflex{display: block !important;}
 
 .big {
 	margin: 80px;
@@ -64,6 +99,7 @@ a {
 	text-align: center;
 	color: #ffffff;
 	font-size: 20px;
+	box-shadow: 4px 4px 4px #97ab95;
 }
 
 .title {
@@ -73,14 +109,47 @@ a {
 	font-weight: 900;
 }
 
-table {
-	width: 900px;
+.subtitle{
+	text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
 }
 
-table, tr, th, td {
-	border: 1px solid black;
+.back {
+	margin-top: 15px;
+}
+
+.signback {
+	margin-top: 15px;
+    background-color: #e5e5e5;
+    border-radius: 5px;	
+}
+
+table {width: 900px;}
+
+.bottom_table {
+	width: 100%;
+	height: 180px;
 	border-collapse: collapse;
-	height: 30px;
+	margin: 20px 0; 
+	border-left: none; 
+	border-right: none;
+	border-top: 0.5px solid gray;
+	border-bottom: 0.5px solid gray;
+}
+
+.bottom_table > tbody > tr{border:none;}
+.bottom_table > tbody > tr > th{border:none;}
+.bottom_table > tbody > tr > td{border:none;}
+
+
+.sign_btn {
+    width: 115px;
+    height: 30px;
+    margin-top: 25px;
+    border: none;
+    box-shadow: darkgrey 2px 2px 2px;
+    font-size: 15px;
 }
 
 /* footer.jsp */
@@ -95,3 +164,80 @@ footer{
 	color: #ffffff;
 	font-size: 13px;
 }
+.sign{
+	width: 400px;
+    height: 225px;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.sign tr {height: 50px;}
+
+.sign tr td{text-align: left;}
+.sign tr td input{width:150px;}
+.inq_btn {
+	padding: 5px 0;
+    font-size: 13px;
+    letter-spacing: 5px;
+    padding: 8px 0 8px 5px;
+}
+.inq_container{background-color: lightgray; padding: 0 20px; border-radius: 5px;}
+.inq_input{padding: 5px 0 5px 3px; width:90% !important;font-size: 20px; }
+.inq_id{font-size: 20px;}
+.inq_frm{display:inline-block;padding: 30px 20px;}
+
+/* reservation.jsp */
+.semi {
+    width: 447px;
+    display:inline-block;
+}
+
+.semititle {
+	font-size: 18px;
+	font-weight: 900;
+	background-color: #e5e5e5;
+}
+
+.div_btn {margin-top: 20px;}
+
+.color tr:nth-child(odd) {
+	background-color: rgb(130, 130, 130, 0.21);
+}
+.color tr:nth-child(even) {
+	background-color: rgb(126, 126, 126, 0.02);
+}
+
+/*
+.color th:first-child,
+.color td:first-child {
+	border-left: 0 !important;
+}
+
+.color th:last-child,
+.color td:last-child {
+	border-right: 0 !important;
+}
+*/
+
+.color{
+	border-left: 2px solid white;
+	border-right:2px solid white;
+	border-top: 1.1px solid #444444 !important;
+	border-bottom: 1.1px solid #444444 !important;
+	border-collapse: collapse;
+}
+
+.color th,
+.color td {
+	border:none;
+	border-bottom: 1px solid white !important;
+}
+.color tr:first-child {
+	border-bottom: 1.1px solid black;
+}
+.color tr{height:30px;}
+
+.st1{height:36.5px; border-bottom: none !important;}
+.st2{height:24px; border-bottom: none !important;}
+
+.bigbtn {width: 115px; height: 30px;}

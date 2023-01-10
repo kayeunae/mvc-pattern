@@ -1,10 +1,15 @@
 //reservation.jsp
 function frm_submit() {
 	var f = document.frm;
-	
-	if (f.count.value == 'no') {
+
+	if (f.ticket.value == 'no') {
 		alert("티켓 매수를 선택해주십시오");
-		f.count.focus();
+		f.ticket.focus();
+		return false;
+	}
+	if (f.id.value == '') {
+		alert("아이디를 입력해주십시오");
+		f.id.focus();
 		return false;
 	}
 	f.submit();
@@ -40,4 +45,52 @@ function signUP() {
 		return false;
 	}
 	s.submit();
+}
+
+
+//inquiry.jsp
+function frm_inquiry_submit() {
+	var f = document.frm_inquiry;
+
+	if (f.id.value == '') {
+		alert("아이디를 입력해주십시오");
+		f.id.focus();
+		return false;
+	}
+	f.submit();
+}
+
+//inquiryDetail.jsp
+function inq_delete(value){
+	var f = document.frm_inq;
+	console.log(value);
+	if(confirm('예약을 취소하시겠습니까?')){
+		$('#delete_no').val(value);
+		f.submit();
+	} else return false;
+}
+
+//modify.jsp
+function mdf_submit() {
+	var f = document.frm_modify;
+
+	if (f.ticket.value == 'no') {
+		alert("티켓 매수를 선택해주십시오");
+		f.ticket.focus();
+		return false;
+	}
+	f.submit();
+}
+
+function mdf_delete(){
+	var f = document.frm_modify_delete;
+	
+	if(confirm('예약을 취소하시겠습니까?')){
+		f.submit();
+	} else return false;
+}
+
+function mdf_bus(){
+	var sel_bus = $('#test option:selected').val();
+	$('#in_bus').val(sel_bus);
 }

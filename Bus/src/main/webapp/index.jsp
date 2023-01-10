@@ -10,11 +10,10 @@
 <body>
 	<%@include file="header.jsp"%>
 	<section>
-	
 		<div class="wrapper">
-			<div class="big"><a href="view">시간표 조회</a></div>
-			<div class="big"><a href="inquiry">예약 조회</a></div>
-			<div class="big"><a href="sign">회원가입</a></div>
+			<div class="big" onclick="location.href='view';"><a class="menu">시간표 조회</a></div>
+			<div class="big" onclick="location.href='inquiry';"><a class="menu">예약 조회</a></div>
+			<div class="big" onclick="location.href='sign';"><a class="menu">회원가입</a></div>
 		</div>
 	</section>
 	<%@include file="footer.jsp"%>

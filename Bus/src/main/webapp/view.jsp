@@ -14,7 +14,7 @@
 		<section>
 			<div class="title">시간표 조회</div>
 			<div class="wrapper">
-				<table>
+				<table class="color">
 					<tr>
 						<th>차량코드</th>
 						<th>출발지</th>
@@ -33,7 +33,7 @@
 						<td>${bus.duration}</td>
 						<td>${bus.charge}</td>
 						<td>
-							<button><a href="./reservation?bus_no=${bus.bus_no}">예약</a></button>
+							<button class="view_btn table_btn" onclick="location.href='./reservation?bus_no=${bus.bus_no}';">예약</button>
 						</td>
 					</tr>
 					</c:forEach>
