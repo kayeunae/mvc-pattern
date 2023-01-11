@@ -31,7 +31,7 @@
 						<td>${bus.arrival}</td>
 						<td>${bus.d_time}</td>
 						<td>${bus.duration}</td>
-						<td>${bus.charge}</td>
+						<td id="money">${bus.charge}</td>
 						<td>
 							<button class="view_btn table_btn" onclick="location.href='./reservation?bus_no=${bus.bus_no}';">예약</button>
 						</td>
@@ -41,5 +41,27 @@
 			</div>
 		</section>
 	<%@include file="footer.jsp"%>
+	<script>
+		$(document).ready(function(){
+			Object.values(${bus});
+			var money = $('#money').val();
+			
+			var add = money.toString()
+				.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+		})
+	/*
+	const n1 = 12345.6789;
+	const n2 = -12345.6789;
+
+	const cn1 = n1.toString()
+	  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+	const cn2 = n2.toString()
+	  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+	document.writeln(cn1);
+	document.writeln('<br>');
+	document.writeln(cn2);
+	*/
+	</script>
 </body>
 </html>

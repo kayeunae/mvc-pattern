@@ -60,7 +60,7 @@
 							<th>예약 매수</th>
 							<td>
 								<select id="tck" name="ticket" onchange="selectBoxValue(this.value)">
-									<option value=0>매수 선택</option>
+									<option value="no" selected >매수 선택</option>
 									<option value=1>1매</option>
 									<option value=2>2매</option>
 									<option value=3>3매</option>
@@ -120,13 +120,23 @@
 	<script>
 		function selectBoxValue(value) {
 			var selval = document.getElementById('tck').value;
-			var chrval = ${bus.charge};
-			var fee = chrval * selval;
-			$('#testfee').text(fee + "원");
-			$('#fee').val(fee);
-			if (isNaN(fee)) {
-				fee = 0;
+			
+			if (selval != "no"){
+				var chrval = ${bus.charge};
+				var fee = chrval * selval;
+				fee = Number(fee);
+				
+				$('#testfee').text(fee + "원");
+				$('#fee').val(fee);
+				
 			}
+			else{
+				$('#testfee').text("0원");
+				alert("매수를 선택해 주십시오.");
+			}
+			
+			
+			
 
 			/*
 			var selval = document.getElementById('tck').value;
