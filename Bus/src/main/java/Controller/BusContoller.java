@@ -30,7 +30,7 @@ public class BusContoller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BusDAO dao;
 	private ServletContext ctx;
-
+	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -50,8 +50,8 @@ public class BusContoller extends HttpServlet {
 	}
 	
 	protected void doPro (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String context = request.getContextPath();
-		String command = request.getServletPath();
+		String context = request.getContextPath(); //컨텍스트 경로를 얻어옴.
+		String command = request.getServletPath(); //서블릿 경로를 얻어옴
 		String site = null;
 		
 		switch(command) {
@@ -94,22 +94,24 @@ public class BusContoller extends HttpServlet {
 		}
 		if(site.startsWith("redirect:/")) {	//redirect (페이지 이동)
 			String rview = site.substring("redirect:/".length()); //redirect:/문자열만큼 잘라준다.
-			System.out.println("substring" + rview);
 			response.sendRedirect(rview);
 		} else if (site.startsWith("null")) { 
-			System.out.println("startwith: null");
 		} else { //forward (페이지 이동)
 			ctx.getRequestDispatcher("/" + site).forward(request, response);
 		}	
 	}
 	
 	public String getView(HttpServletRequest request) {
+		//Bus 타입의 객체 배열 선언 => try문 안에서 dao의 메소드 리턴 값을 받기 위해 선언.
 		ArrayList<Bus> busTime;
 		
 		try {
+			//arrayList busTime은 DAO의 getView 메소드를 통해 생성함.
 			busTime = dao.getView();
+			//busTime arraylist를 busTime이라는 이름으로 setting한다.
 			request.setAttribute("busTime", busTime);
 		} catch (Exception e) {
+			//printStackTrace : 예외발생 당시의 호출 스택에 있던 메소드의 정보와 예외 메세지를 화면에 출력함
 			e.printStackTrace();
 			ctx.log("시간표 조회 과정에서 문제 발생");
 			request.setAttribute("error", "시간표 조회가 정상적으로 처리되지 않았습니다!");
@@ -170,7 +172,6 @@ public class BusContoller extends HttpServlet {
 	//예약 등록
 	public String doRev(HttpServletRequest request, HttpServletResponse response) {
 		String bus_no = request.getParameter("bus_no");
-		System.out.println("지금 뭐니? : " +bus_no);
 		Reservation rev = new Reservation();
 		
 		try {
@@ -268,14 +269,6 @@ public class BusContoller extends HttpServlet {
 		try {
 			BeanUtils.populate(reserv, request.getParameterMap());
 			dao.subModify(reserv);
-			
-//			response.setContentType("text/html; charset=UTF-8");
-//			PrintWriter out = response.getWriter();
-//			
-//			out.println("<script>");
-//			out.println("alert('예약이 변경되었습니다.');");
-//			out.println("</script>");
-//			out.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -288,15 +281,6 @@ public class BusContoller extends HttpServlet {
 		try {
 			BeanUtils.populate(reserv, request.getParameterMap());
 			dao.subDelete(reserv);
-//			response.setContentType("text/html; charset=UTF-8");
-//			PrintWriter out = response.getWriter();
-//			
-//			out.println("<script>");
-//			out.println("alert('예약이 취소되었습니다!');");
-//			out.println("const url = location.origin;");
-//			out.println("location.href = url + '/Bus/inquirDetail?id="+reserv.getId()+"';");
-//			out.println("</script>");
-//			out.flush();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

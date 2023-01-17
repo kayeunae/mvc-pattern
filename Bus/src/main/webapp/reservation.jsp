@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +37,7 @@
 							<td>${bus.d_time}</td>
 							<td>${bus.a_time}</td>
 							<td>${bus.duration}</td>
-							<td>${bus.charge}원</td>
+							<td><fmt:formatNumber value="${bus.charge}" pattern="#,###" />원</td>
 						</tr>
 					</table>
 				</div>
@@ -54,7 +55,7 @@
 						</tr>
 						<tr>
 							<th>버스요금</th>
-							<td id="chr">${bus.charge}원</td>
+							<td id="chr"><fmt:formatNumber value="${bus.charge}" pattern="#,###" />원</td>
 						</tr>
 						<tr>
 							<th>예약 매수</th>
@@ -124,31 +125,18 @@
 			if (selval != "no"){
 				var chrval = ${bus.charge};
 				var fee = chrval * selval;
-				fee = Number(fee);
+				var fee2 = chrval * selval;
 				
+				fee = Number(fee);
+				fee = fee.toLocaleString()
 				$('#testfee').text(fee + "원");
-				$('#fee').val(fee);
+				$('#fee').val(fee2);
 				
 			}
 			else{
 				$('#testfee').text("0원");
 				alert("매수를 선택해 주십시오.");
 			}
-			
-			
-			
-
-			/*
-			var selval = document.getElementById('tck').value;
-			if (selval == "no") {
-				alert('숫자를 선택해주십시오');
-			}
-			else {
-				var chrval = ${bus.charge};
-				var fee = chrval * selval;
-				document.getElementById('testfee').innerText = fee + "원";
-			}
-			 */
 		}
 	</script>
 </body>

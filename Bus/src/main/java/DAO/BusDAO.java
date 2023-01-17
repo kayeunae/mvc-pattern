@@ -36,15 +36,23 @@ public class BusDAO {
 	    
 	    //버스 시간표 가져오기
 	    public ArrayList<Bus> getView() throws Exception{
+	    	//DB 연결
 	    	Connection conn = open();
+	    	
+	    	//Bus ArrayList 생성
 	    	ArrayList<Bus> busTime = new ArrayList<>();
 	    	
 	    	String sql = "SELECT BUS_NO, DEPART, ARRIVAL, D_TIME, DURATION, CHARGE FROM BUS ORDER BY DEPART ASC";
-			PreparedStatement pstmt;
+			//PreparedStatement: sql구문을 실행시키는 기능을 갖는 객체
+	    	PreparedStatement pstmt;
 			pstmt = conn.prepareStatement(sql);
+			//ResultSet : select문의 결과를 저장하는 객체
+			//executeQuery : sql select문 실행 (insert, update, delete는 executeUpdate()메소드 사용) 
 			ResultSet rs = pstmt.executeQuery();
 	    	
+			//try(conn; pstmt; rs): try 문이 끝난 후 자동으로  conn, pstmt, rs를 close()해줌.
 	    	try(conn; pstmt; rs) {
+	    		//rs.next() : select문의 결과가 있을 경우(다음 행이 있을 경우) true를 리턴. 마지막 행 이후에는 false를 반환
 	    		while(rs.next()) {
 	    			Bus bus = new Bus();
 	    			bus.setBus_no(rs.getString(1));
@@ -54,9 +62,11 @@ public class BusDAO {
 	    			bus.setDuration(rs.getString(5));
 	    			bus.setCharge(rs.getInt(6));
 	    			
+	    			//bus객체를 busTime arraylist에 넣어준다.
 	    			busTime.add(bus);
 	    		}
 	    	}
+	    	//arraylist busTime 리턴
 	    	return busTime;
 	    }
 	    
@@ -100,7 +110,6 @@ public class BusDAO {
 	    			return "0";  
 	    		}
 	    	}
-
 	    }
 	    
 	    public void signUp(Passenger passenger) throws Exception {
@@ -135,6 +144,7 @@ public class BusDAO {
 	    		}
 	    	}
 	    }
+	    
 	    public int CountResv() throws Exception {
 			Connection conn = open();
 			String sql = "select count(*) from bus";
@@ -147,7 +157,6 @@ public class BusDAO {
 				else {return rs.getInt(1);}
 			}
 		}
-	    
 	    
 	    public void insertRev(Reservation rev) throws Exception {
 	    	Connection conn = open();

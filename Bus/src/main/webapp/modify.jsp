@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,7 @@
 						<td>${modi.a_time}</td>
 						<td>${modi.duration}</td>
 						<td>${modi.ticket}</td>
-						<td>${modi.price}원</td>
+						<td><fmt:formatNumber value="${modi.price}" pattern="#,###" />원</td>
 					</tr>
 				</table>
 			</div><!-- end of table -->
@@ -63,11 +64,13 @@
 								<td>
 									<select id="test" onchange="mdf_bus()">
 										<c:forEach var="b" items="${blist}">
-											<option value="${b.bus_no}" <c:if test="${b.bus_no eq modi.bus_no}">selected</c:if>>
+											<option value="${b.bus_no}" 
+											<c:if test="${b.bus_no eq modi.bus_no}">selected</c:if>>
 												${b.depart} - ${b.arrival}
 											</option>
 										</c:forEach>
 									</select>
+									<p></p>
 								</td>
 								<td></td>
 							</tr>
@@ -119,11 +122,16 @@
 			var selval = $('#tck').val();
 			var chrval = ${modi.charge};
 			var fee = chrval * selval;
+			var fee2 = chrval * selval;
 			var sel_bus = $('#test option:selected').val(); //버스 선택된 값
+			
+			fee = Number(fee);
+			fee = fee.toLocaleString()
 			$('#testfee').text(fee + "원");
-			$('#fee').val(fee);
+			$('#fee').val(fee2);
+			
 			$('#in_tck').val(selval);
-			$('#in_price').val(fee);
+			$('#in_price').val(fee2);
 			$('#in_bus').val(sel_bus);
 		})
 		
@@ -131,10 +139,13 @@
 			const selval = $('#tck').val();
 			var chrval = ${modi.charge};
 			var fee = chrval * selval;
+			var fee2 = chrval * selval;
+			fee = Number(fee);
+			fee = fee.toLocaleString()
 			$('#testfee').text(fee + "원");
-			$('#fee').val(fee);
+			$('#fee').val(fee2);
 			$('#in_tck').val(selval);
-			$('#in_price').val(fee);
+			$('#in_price').val(fee2);
 		}
 	</script>
 </body>

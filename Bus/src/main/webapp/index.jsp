@@ -11,7 +11,7 @@
 	<%@include file="header.jsp"%>
 	<section>
 		<div class="wrapper">
-			<div class="big" onclick="location.href='view';"><a class="menu">시간표 조회</a></div>
+			<div class="big" onclick="location.href='view';"><a class="menu">시간표 조회</a></div>	<!-- <a href="view"> 와 같음-->
 			<div class="big" onclick="location.href='inquiry';"><a class="menu">예약 조회</a></div>
 			<div class="big" onclick="location.href='sign';"><a class="menu">회원가입</a></div>
 		</div>

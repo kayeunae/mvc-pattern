@@ -1,14 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!-- MVC패턴으로 작업하는 환경 : JSP(java server page). 표기법: "< %@ %>" -->
+<!-- jstl : jsp의 라이브러리 -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>고속버스 통합 서비스</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<!-- jstl 표기법 -->
 	<%@include file="header.jsp"%>
 	<%@include file="topmenu.jsp" %>
 		<section>
@@ -31,9 +34,9 @@
 						<td>${bus.arrival}</td>
 						<td>${bus.d_time}</td>
 						<td>${bus.duration}</td>
-						<td id="money">${bus.charge}</td>
+						<td id="money"><fmt:formatNumber value="${bus.charge}" pattern="#,###" /></td>
 						<td>
-							<button class="view_btn table_btn" onclick="location.href='./reservation?bus_no=${bus.bus_no}';">예약</button>
+							<button class="table_btn" onclick="location.href='./reservation?bus_no=${bus.bus_no}';">예약</button>
 						</td>
 					</tr>
 					</c:forEach>
@@ -49,19 +52,6 @@
 			var add = money.toString()
 				.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 		})
-	/*
-	const n1 = 12345.6789;
-	const n2 = -12345.6789;
-
-	const cn1 = n1.toString()
-	  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-	const cn2 = n2.toString()
-	  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-
-	document.writeln(cn1);
-	document.writeln('<br>');
-	document.writeln(cn2);
-	*/
 	</script>
 </body>
 </html>
